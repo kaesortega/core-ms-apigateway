@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pe.com.libertyfinance</groupId>
-	<artifactId>ux-ms-apigateway</artifactId>
+	<artifactId>core-ms-apigateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ux-ms-apigateway</name>
+	<name>core-ms-apigateway</name>
 	<description>Api gateway de la capa ux</description>
 	<url/>
 	<licenses>
