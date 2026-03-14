@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: core-ms-apigateway
+
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: person-service
+              uri: ${MS_AUTH_URL:http://localhost:8083}
+              predicates:
+                - Path=/person/**
+              filters:
+                - RewritePath=/person/(?<segment>.*), /core-ms-person/v1/$\{segment}
+
+
+            - id: rating-service
+              uri: ${MS_RATING_URL:http://localhost:8082}
+              predicates:
+                - Path=/rating/**
+              filters:
+                - RewritePath=/rating/(?<segment>.*), /core-ms-rating/v1/$\{segment}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+    org.springframework.web.servlet.handler: TRACE
+
+jwt:
+  secret: ${JWT_SECRET:z7WzFVRg/6U1u6IUYyfPPMH9y4+HwwGtnMImbfrPlTo=}
