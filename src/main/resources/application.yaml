@@ -21,6 +21,13 @@ spring:
               filters:
                 - RewritePath=/rating/(?<segment>.*), /core-ms-rating/v1/$\{segment}
 
+            - id: rating-swagger
+              uri: ${MS_RATING_URL:http://localhost:8084}
+              predicates:
+                - Path=/core-ms-rating/**
+              filters:
+                - RewritePath=/core-ms-rating/(?<segment>.*), /core-ms-rating/$\{segment}
+
 logging:
   level:
     org.springframework.cloud.gateway: TRACE
