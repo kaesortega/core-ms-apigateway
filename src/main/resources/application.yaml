@@ -8,15 +8,14 @@ spring:
         webmvc:
           routes:
             - id: person-service
-              uri: ${MS_AUTH_URL:http://localhost:8083}
+              uri: ${MS_PERSON_URL:http://localhost:8083}
               predicates:
                 - Path=/person/**
               filters:
                 - RewritePath=/person/(?<segment>.*), /core-ms-person/v1/$\{segment}
 
-
             - id: rating-service
-              uri: ${MS_RATING_URL:http://localhost:8082}
+              uri: ${MS_RATING_URL:http://localhost:8084}
               predicates:
                 - Path=/rating/**
               filters:
